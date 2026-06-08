@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+openai
+python-dotenv
+requests
+pygame
+sounddevice
+soundfile
+soundcard
+numpy
+edge-tts

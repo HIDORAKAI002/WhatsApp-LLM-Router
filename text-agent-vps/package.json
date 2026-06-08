@@ -1,0 +1,16 @@
+{
+  "name": "whatsapp-text-agent",
+  "version": "1.0.0",
+  "description": "Headless WhatsApp Web agent for receiving texts and communicating with the Brain server.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.26.0"
+  }
+}

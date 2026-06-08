@@ -1,0 +1,60 @@
+=========================================================
+      WHATSAPP AI AGENT: VPS LAUNCH & TESTING GUIDE
+=========================================================
+
+This guide explains  exactly how to upload the code to a temporary VPS, how to test the system, and what photos to capture for your LinkedIn post.
+
+---------------------------------------------------------
+STEP 1: UPLOADING TO THE VPS (TEXT AGENT)
+---------------------------------------------------------
+1. ZIP the `text-agent-vps` folder.
+2. Upload the ZIP file to your temporary VPS server and extract it.
+3. Open a terminal on the VPS and navigate into the `text-agent-vps` folder.
+4. Run: `npm install` to download all the NodeJS dependencies.
+5. In the VPS `.env` file, change `BRAIN_SERVER_URL` to your desktop PC's public IP (or Ngrok URL) where the Voice Agent will be running.
+6. Run: `npm start`.
+7. The VPS terminal will display a giant QR Code. Open your alternate WhatsApp account on your phone, go to "Linked Devices", and scan the QR Code.
+8. The VPS is now listening for text messages 24/7!
+
+---------------------------------------------------------
+STEP 2: RUNNING THE DESKTOP BRAIN (VOICE AGENT)
+---------------------------------------------------------
+1. On your local Windows machine, open the `desktop-voice-agent` folder.
+2. Ensure you have run: `pip install -r requirements.txt`.
+3. Open `.env` and paste your Groq, Mistral, and Gemini API keys.
+4. Change `TEXT_AGENT_URL` to the public IP of your VPS server (e.g., http://<VPS-IP>:3000).
+5. Open two terminals on your desktop inside `desktop-voice-agent`:
+   - Terminal 1: Run `uvicorn app.main:app --port 8000` (This exposes the Brain so the VPS can talk to it).
+   - Terminal 2: Run `python desktop_agent.py` (This turns on the Voice Agent).
+
+---------------------------------------------------------
+STEP 3: HOW TO TEST THE SYSTEM
+---------------------------------------------------------
+Now that both the VPS and Desktop are running, you need to test both TEXT and VOICE:
+
+Test 1: The Headless Text Agent
+- From your primary phone, send a text message to your alternate WhatsApp number.
+- You should see the VPS terminal log the message and forward it to your Desktop.
+- The Desktop Brain will generate a reply and send it back to the VPS.
+- You will receive a text reply instantly.
+- Test the Voice Note Tool: Text the agent "Send me a voice note saying Hello World". It will generate an mp3 on the desktop, send it to the VPS, and the VPS will upload it as a WhatsApp Voice Message!
+
+Test 2: The Desktop Voice Agent
+- Call your alternate WhatsApp number.
+- The Desktop Agent will physically click the "Accept" button and start listening.
+- Say "Hello". The agent will stream the TTS response back to you in ~350ms!
+- Test the Voice Change Tool: Mid-call, say "Change your voice to British". The agent will dynamically change its voice for the rest of the call.
+
+---------------------------------------------------------
+STEP 4: PHOTOS TO CAPTURE FOR LINKEDIN
+---------------------------------------------------------
+Do not upload actual audio/video files in your repository, but for your LinkedIn marketing post, you should take these 3 specific photos/screenshots:
+
+1. THE ARCHITECTURE SCREENSHOT:
+   Take a screenshot of your screen with the VPS Terminal on the left (showing texts being forwarded) and the Desktop Terminal on the right (showing the Brain routing the LLMs). This proves the decoupled enterprise architecture works.
+
+2. THE VOICE NOTE SCREENSHOT:
+   Take a screenshot of the WhatsApp chat on your phone where you text the agent "Send me a voice note", and the agent replies with the native WhatsApp audio bubble. 
+
+3. THE ENTERPRISE CODE SCREENSHOT:
+   Open VS Code and take a screenshot showing the deep, highly-modular folder structure (`app/providers/`, `app/core/`, `src/routes/`) to show recruiters and developers how professional and complex the backend architecture is.

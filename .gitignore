@@ -1,0 +1,36 @@
+# Environments
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+venv/
+env/
+.venv/
+
+# NodeJS
+node_modules/
+node-*/
+npm-debug.log
+yarn-error.log
+
+# WhatsApp Auth Session (Extremely important not to commit!)
+whatsapp_auth/
+.wwebjs_auth/
+.wwebjs_cache/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs & Media
+*.log
+*.mp3
+crash_log.txt
+agent_crashes.log
